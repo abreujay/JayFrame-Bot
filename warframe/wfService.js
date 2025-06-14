@@ -1,42 +1,43 @@
 const axios = require("axios");
 
-async function getItem(itemName) {
+async function getItem(itemName, originalMessage) {
   try {
-    const responseItem = await axios.get(
-      `https://api.warframe.market/v1/items/${itemName}`
-    );
-    const itemData = responseItem.data.payload.item.items_in_set[0];
-
-    const nome = itemData.pt?.item_name || "Nome não disponível";
-    const desc = itemData.pt?.description || "Sem descrição";
-
     const responsePrice = await axios.get(
       `https://api.warframe.market/v1/items/${itemName}/orders`
     );
     const orders = responsePrice.data.payload.orders;
 
-    if (orders.length > 0) {
-      const firstOrder = orders[0];
-      const itemPrice = firstOrder.platinum;
-      const itemQuantity = firstOrder.quantity;
-      const itemRank = firstOrder.mod_rank || "Não disponível";
+    const onlineSellOrders = orders.filter(
+      (order) => order.user.status === "ingame" && order.order_type === "sell"
+    );
+
+    if (onlineSellOrders.length > 0) {
+      const cheapestOrder = onlineSellOrders.sort((a, b) => a.platinum - b.platinum)[0];
+
+      const itemPrice = cheapestOrder.platinum;
+      const itemQuantity = cheapestOrder.quantity;
+      const itemRank = cheapestOrder.mod_rank ?? "Not available";
+      const seller = cheapestOrder.user.ingame_name;
+      const status = cheapestOrder.user.status;
+
+      // Mensagem de compra usando o texto original que o jogador enviou (originalMessage)
+      const buyMessage = `Hi ${seller}, I'm interested in buying the item you have for sale: "${originalMessage}". Please let me know when you're available. Thanks!`;
 
       return {
-        nome,
-        desc,
         itemPrice,
         itemQuantity,
         itemRank,
+        seller,
+        status,
+        buyMessage,
       };
     } else {
       return {
-        nome,
-        desc,
-        message: "Nenhuma ordem encontrada para este item.",
+        message: "❌ No online sellers for this item right now.",
       };
     }
   } catch (error) {
-    throw new Error("Erro ao localizar item: " + error.message);
+    throw new Error("Error fetching item: " + error.message);
   }
 }
 

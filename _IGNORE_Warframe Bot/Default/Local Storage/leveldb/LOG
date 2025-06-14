@@ -1,3 +1,5 @@
-2025/06/12-23:53:40.444 28c4 Reusing MANIFEST G:\projetos\apis\warframe_bott\_IGNORE_Warframe Bot\Default\Local Storage\leveldb/MANIFEST-000001
-2025/06/12-23:53:40.451 28c4 Recovering log #3
-2025/06/12-23:53:40.453 28c4 Reusing old log G:\projetos\apis\warframe_bott\_IGNORE_Warframe Bot\Default\Local Storage\leveldb/000003.log 
+2025/06/13-23:26:02.304 1700 Reusing MANIFEST G:\projetos\apis\warframe_bott\_IGNORE_Warframe Bot\Default\Local Storage\leveldb/MANIFEST-000001
+2025/06/13-23:26:02.315 1700 Recovering log #4
+2025/06/13-23:26:02.316 1700 Level-0 table #6: started
+2025/06/13-23:26:02.648 1700 Level-0 table #6: 24429 bytes OK
+2025/06/13-23:26:02.845 1700 Delete type=0 #4
