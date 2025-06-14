@@ -16,8 +16,8 @@ app.use(express.json());
 app.listen(PORT, () => {
 
   console.log(`Servidor Rodando na Porta ${PORT}`);
-  console.log('Bots Iniciados!')
-  wppBot();
+  console.log('Bot Iniciados!')
+
   discBot();
 
 });
