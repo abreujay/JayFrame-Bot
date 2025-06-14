@@ -2,10 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const getItem = require("../warframe/wfService");
 
-const wppBot = require('../whatsapp/wpp_bot')
 const discBot = require('../discord/disBot')
-
-const wa = require("@open-wa/wa-automate");
 const { Client, GatewayIntentBits } = require("discord.js");
 
 const app = express();
