@@ -10,10 +10,16 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+
+  res.send('Bot Acordado!')
+
+})
+
 app.listen(PORT, () => {
 
   console.log(`Servidor Rodando na Porta ${PORT}`);
-  console.log('Bot Iniciados!')
+  console.log('Bot Iniciado!')
 
   discBot();
 
