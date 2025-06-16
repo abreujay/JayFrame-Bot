@@ -29,7 +29,7 @@ No Discord, utilize o comando:
 Exemplo:
 
 ```
-/market soma prime
+/market soma prime set
 ```
 
 O bot responderá com os detalhes dos anúncios encontrados para o item pesquisado.
@@ -62,15 +62,3 @@ O bot responderá com os detalhes dos anúncios encontrados para o item pesquisa
    ```bash
    node server.js
    ```
-
----
-
-## Contribuições
-
-Contribuições são bem-vindas! Para contribuir:
-
-1. Faça um fork do repositório  
-2. Crie uma branch com sua feature (`git checkout -b minha-feature`)  
-3. Faça commit das alterações (`git commit -m 'Minha nova feature'`)  
-4. Envie para o repositório remoto (`git push origin minha-feature`)  
-5. Abra um Pull Request  
